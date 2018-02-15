@@ -32,6 +32,8 @@ import org.openide.util.actions.Presenter;
 @Messages("CTL_SniplogActionListener=Sniplog")
 public final class SniplogActionListener extends AbstractAction implements Presenter.Toolbar {
 
+    private Object o;
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO implement action body
@@ -39,6 +41,7 @@ public final class SniplogActionListener extends AbstractAction implements Prese
 
     @Override
     public Component getToolbarPresenter() {
+        
         return new SniplogPanel();
     }
 }

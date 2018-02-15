@@ -5,7 +5,10 @@
  */
 package org.sniplog.test;
 
+import java.io.IOException;
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -43,12 +46,20 @@ public class SniplogUnitTest {
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void hello() throws JSONException {
+     public void sniplogReader() throws JSONException, IOException {
      
         SniplogReader reader = new SniplogReader();
         
-        String msg = reader.readData();   
-        System.out.println(msg);
-     
+        JSONObject msg = reader.readData("get_entry_by_id", 62);
+
+        JSONObject result = msg.getJSONArray("data").getJSONObject(0);
+        String access = (String) result.get("access");
+        String description = (String) result.get("description");
+        
+        assertEquals("0", access);
+        assertFalse(description.isEmpty());
+        
+        System.out.println(access);
+        System.out.println(description);
      }
 }
