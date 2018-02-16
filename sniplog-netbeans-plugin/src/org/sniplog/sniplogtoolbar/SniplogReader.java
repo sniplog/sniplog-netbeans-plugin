@@ -45,7 +45,7 @@ public class SniplogReader {
     
     
     
-    public JSONObject readData(String action, Integer id) throws JSONException, MalformedURLException, IOException {
+    public JSONObject readData(String action, String id) throws JSONException, MalformedURLException, IOException {
 
         String urlString = "http://sniplog.it/en/index.php?option=com_ajax&plugin=api&format=json";
         StringBuilder postData = new StringBuilder();

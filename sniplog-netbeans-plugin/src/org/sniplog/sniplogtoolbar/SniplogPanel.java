@@ -6,10 +6,14 @@
 package org.sniplog.sniplogtoolbar;
 
 import java.awt.List;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Arrays;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.openide.awt.HtmlBrowser.URLDisplayer;
+import org.openide.util.Exceptions;
 
 /**
  *
@@ -22,7 +26,7 @@ public class SniplogPanel extends javax.swing.JPanel {
      */
     public SniplogPanel() {
         initComponents();
-        
+
     }
 
     /**
@@ -84,32 +88,60 @@ public class SniplogPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         try {
             String searchText = URLEncoder.encode(jTextField1.getText(), "UTF-8");
             URLDisplayer.getDefault().showURL(new URL("http://www.google.com/search?hl=en&q=" + searchText + "&btnG=Google+Search"));
-            
-            
-            
+
         } catch (Exception eee) {
             return;//nothing much to do
         }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        
+
     }//GEN-LAST:event_jTextField1KeyPressed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-        
+
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+
+
+        SniplogReader reader = new SniplogReader();
+
+        JSONObject msg = null;
+        try {
+            msg = reader.readData("get_entry_by_id", jTextField1.getText());
+        } catch (JSONException ex) {
+            Exceptions.printStackTrace(ex);
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+
+        try {
+            
+            
+            String description = "";
+            JSONObject result = msg.getJSONArray("data").getJSONObject(0);
+            
+            if(!result.get("description").toString().isEmpty())
+                description = (String) result.get("description");
+            
         
-            String[] myStrings = new String[] {jTextField1.getText()};       
+            String[] myStrings = new String[]{description};
             jList1.setListData(myStrings);
+            
+        } catch (JSONException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+        
+        
+        
+        
+
     }//GEN-LAST:event_jTextField1KeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -118,4 +150,3 @@ public class SniplogPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
-
