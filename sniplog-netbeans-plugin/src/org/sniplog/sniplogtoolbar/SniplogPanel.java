@@ -127,8 +127,8 @@ public class SniplogPanel extends javax.swing.JPanel {
             String description = "";
             JSONObject result = msg.getJSONArray("data").getJSONObject(0);
             
-            if(!result.get("description").toString().isEmpty())
-                description = (String) result.get("description");
+//            if(!result.get("description").toString().isEmpty())
+//                description = (String) result.get("description");
             
         
             String[] myStrings = new String[]{description};
