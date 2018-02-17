@@ -10,6 +10,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Arrays;
+import javax.swing.JComponent;
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JLayer;
+import javax.swing.JOptionPane;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.openide.awt.HtmlBrowser.URLDisplayer;
@@ -38,9 +43,37 @@ public class SniplogPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jButton1 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jButton3 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jButton2 = new javax.swing.JButton();
+
+        org.openide.awt.Mnemonics.setLocalizedText(jButton1, org.openide.util.NbBundle.getMessage(SniplogPanel.class, "SniplogPanel.jButton1.text")); // NOI18N
+
+        jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addGap(0, 10, Short.MAX_VALUE))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addGap(0, 69, Short.MAX_VALUE))
+        );
+
+        org.openide.awt.Mnemonics.setLocalizedText(jButton3, org.openide.util.NbBundle.getMessage(SniplogPanel.class, "SniplogPanel.jButton3.text")); // NOI18N
+        jTabbedPane1.addTab(org.openide.util.NbBundle.getMessage(SniplogPanel.class, "SniplogPanel.jButton3.TabConstraints.tabTitle"), jButton3); // NOI18N
 
         jTextField1.setText(org.openide.util.NbBundle.getMessage(SniplogPanel.class, "SniplogPanel.jTextField1.text")); // NOI18N
         jTextField1.setToolTipText(org.openide.util.NbBundle.getMessage(SniplogPanel.class, "SniplogPanel.jTextField1.toolTipText")); // NOI18N
@@ -69,6 +102,8 @@ public class SniplogPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jList1);
 
+        org.openide.awt.Mnemonics.setLocalizedText(jButton2, org.openide.util.NbBundle.getMessage(SniplogPanel.class, "SniplogPanel.jButton2.text")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,7 +112,9 @@ public class SniplogPanel extends javax.swing.JPanel {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(452, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,6 +122,9 @@ public class SniplogPanel extends javax.swing.JPanel {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(83, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,6 +173,28 @@ public class SniplogPanel extends javax.swing.JPanel {
         
             String[] myStrings = new String[]{description};
             jList1.setListData(myStrings);
+//            jOptionPane1.
+//            jOptionPane1.setVisible(true);
+            jDesktopPane1.setVisible(true);
+            jDesktopPane1.show();
+            
+            jButton2.setVisible(false);
+            jTabbedPane1.show();
+            jTabbedPane1.doLayout();
+            jTabbedPane1.setEnabled(true);
+            jTabbedPane1.setFocusable(true);
+            jTabbedPane1.setVisible(true);
+            
+            JLayer layer = new JLayer(jTabbedPane1);
+            layer.show();
+            layer.setVisible(true);
+            
+            JFrame frame = new JFrame();
+            frame.add(jTabbedPane1);
+            
+            frame.show();
+            frame.setVisible(true);
+            
             
         } catch (JSONException ex) {
             Exceptions.printStackTrace(ex);
@@ -145,8 +207,14 @@ public class SniplogPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField1KeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
